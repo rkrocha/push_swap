@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:30:04 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/09/07 15:58:01 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/09/09 09:59:21 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,19 @@ t_dlist	*dlst_new(int content)
 	return (new);
 }
 
-void	dlst_add_front(t_dlist **lst, t_dlist *new)
+void	dlst_add_front(t_dlist **lst, t_dlist *first)
 {
-	new->next = *lst;
-	new->prev = NULL;
-	(*lst)->prev = new;
-	*lst = new;
+	first->next = *lst;
+	first->prev = NULL;
+	if (*lst)
+		(*lst)->prev = first;
+	*lst = first;
 }
 
 void	dlst_clear(t_dlist **lst)
 {
-	t_list	*temp;
-	t_list	*tracker;
+	t_dlist	*temp;
+	t_dlist	*tracker;
 
 	if (!lst)
 		return ;
@@ -49,4 +50,15 @@ void	dlst_clear(t_dlist **lst)
 		tracker = temp;
 	}
 	*lst = NULL;
+}
+
+void	dlst_iter(t_dlist *lst, void (*f)(int))
+{
+	if (!lst)
+		return ;
+	while (lst != NULL)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }

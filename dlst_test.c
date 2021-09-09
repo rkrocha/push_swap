@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.h                                            :+:      :+:    :+:   */
+/*   dlst_test.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/07 14:57:33 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/09/09 09:26:08 by rkochhan         ###   ########.fr       */
+/*   Created: 2021/09/09 09:19:02 by rkochhan          #+#    #+#             */
+/*   Updated: 2021/09/09 10:00:31 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_H
-# define STACK_H
+#include "libft.h"
+#include "stack.h"
 
-typedef struct s_dlist
+int	main(void)
 {
-	int				content;
-	struct s_dlist	*next;
-	struct s_dlist	*prev;
-}	t_dlist;
+	t_dlist	*lst;
+	size_t	i;
 
-typedef struct s_stack
-{
-	size_t	len;
-	t_dlist	*top;
-	t_dlist	*bottom;
-}	t_stack;
-
-/*
-** dlst.c:
-*/
-t_dlist	*dlst_new(int content);
-void	dlst_add_front(t_dlist **lst, t_dlist *new);
-void	dlst_clear(t_dlist **lst);
-void	dlst_iter(t_dlist *lst, void (*f)(int));
-
-#endif
+	i = 42;
+	lst = NULL;
+	while (i > 0)
+	{
+		ft_putstr("alloc new list member\n");
+		dlst_add_front(&lst, dlst_new(i));
+		i--;
+	}
+	dlst_iter(lst, ft_putnbr);
+	ft_putchar('\n');
+	dlst_clear(&lst);
+	return (0);
+}
