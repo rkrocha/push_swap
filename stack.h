@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 14:57:33 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/09/09 09:26:08 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/09/09 13:51:41 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,13 @@ t_dlist	*dlst_new(int content);
 void	dlst_add_front(t_dlist **lst, t_dlist *new);
 void	dlst_clear(t_dlist **lst);
 void	dlst_iter(t_dlist *lst, void (*f)(int));
+
+/*
+** stack.c:
+*/
+void	stack_push(t_stack *stack, t_dlist *new);
+t_dlist	*stack_pop(t_stack *stack);
+void	stack_print(t_stack *stack, char *title);
+void	stack_clear(t_stack *stack);
 
 #endif
