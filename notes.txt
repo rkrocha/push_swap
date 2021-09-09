@@ -1,0 +1,45 @@
+pacovali:fire_engine:  2 months ago
+Just Google stack sorting. That's the idea of this project. Well, you're advised to spend a week or so on your own algo. After that see other solutions on internet, compare them, choose the better one and try to memorize it.
+
+
+
+lorenuar:debian:  2 months ago
+The best advices I would give you for push-swap, are:
+Dont limit yourself to C use python or any other laguage that handles the memory stuff to iterate fast on the algorithm logic
+
+Once you tested your algorithm and it meets the requirements, implement the 'backend' memory managment stuff, SEPARATELY from the 'driver' algorithm that will orchestrate your backend
+
+Make your parser BULLET-PROOF
+
+Also on the general subject of optimization, finding the shortest possible amount of instructions, in this case. Take a look at dynamic programming, especially Longest Increasing Subsequence, it will help you a lot
+
+
+
+
+rkowalsk  1 month ago
+my push swap accepted ./push_swap "1 2 3 5 4" and ./push_swap 1 2 3 5 4 but not both at the same time
+
+hyojekim  1 month ago
+You can check the valid cases using ./checker_os
++) ./push_swap 3 " +000002" 6 5  has same result as ./push_swap 3 2 6 5
+
+
+
+
+anolivei | Angelica — 20/07/2021
+Oi Paulo, não entreguei ainda mas a nota mínima é 80% e vc precisa tirar 6 pontos de 10 nos testes de 100 e 500 números
+"With 3 numbers, we need to sort it with not more than 3 instructions.
+With 5 numbers, we need to sort it with not more than 12 instructions.
+With 100 numbers, we can get
+5 points if the size of the list of instructions is less than 700
+4 points if the size of the list of instructions is less than 900
+3 points if the size of the list of instructions is less than 1100
+2 points if the size of the list of instructions is less than 1300
+1 points if the size of the list of instructions is less than 1500
+With 500 numbers, we can get
+5 points if the size of the list of instructions is less than 5500
+4 points if the size of the list of instructions is less than 7000
+3 points if the size of the list of instructions is less than 8500
+2 points if the size of the list of instructions is less than 10000
+1 points if the size of the list of instructions is less than 11500
+According to unreliable sources, we need to get at least 6 points to pass."
