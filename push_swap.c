@@ -6,14 +6,16 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 08:10:25 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/09/09 07:54:21 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/09/13 15:45:47 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "stack.h"
+#include "push_swap.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
+	if (argc == 1)
+		return (-1);
 	return (0);
 }

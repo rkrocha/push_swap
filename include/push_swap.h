@@ -6,12 +6,16 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 09:42:35 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/09/13 15:00:45 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/09/13 15:48:46 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
+# ifndef PS_DEBUG
+#  define PS_DEBUG 0
+# endif
 
 # include "stack.h"
 
