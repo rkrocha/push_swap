@@ -6,12 +6,12 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 14:44:35 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/09/13 15:00:25 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/09/13 15:36:39 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "stack.h"
+#include "push_swap.h"
 
 static void	op_reverse_rotate(t_stack *stack)
 {
@@ -28,19 +28,19 @@ static void	op_reverse_rotate(t_stack *stack)
 
 void	op_rra(t_data *frame)
 {
-	op_reverse_rotate(frame->a_stack);
+	op_reverse_rotate(&frame->a_stack);
 	ft_putendl("rra");
 }
 
 void	op_rrb(t_data *frame)
 {
-	op_reverse_rotate(frame->b_stack);
+	op_reverse_rotate(&frame->b_stack);
 	ft_putendl("rrb");
 }
 
 void	op_rrr(t_data *frame)
 {
-	op_reverse_rotate(frame->a_stack);
-	op_reverse_rotate(frame->b_stack);
+	op_reverse_rotate(&frame->a_stack);
+	op_reverse_rotate(&frame->b_stack);
 	ft_putendl("rrr");
 }
