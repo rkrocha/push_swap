@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 09:57:57 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/09/09 13:49:23 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/09/14 10:38:42 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,20 @@ void	stack_clear(t_stack *stack)
 	dlst_clear(&(stack->top));
 	stack->len = 0;
 	stack->bottom = NULL;
+}
+
+bool	stack_issorted(t_stack *stack)
+{
+	t_dlist	*tracker;
+
+	tracker = stack->top;
+	while (tracker)
+	{
+		if (tracker->next && tracker->content > tracker->next->content)
+			return (false);
+		tracker = tracker->next;
+	}
+	return (true);
 }
 
 void	stack_print(t_stack *stack, char *title)
