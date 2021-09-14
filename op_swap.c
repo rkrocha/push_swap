@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 09:23:35 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/09/13 15:36:19 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/09/14 11:23:57 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@ static void	op_swap(t_stack *stack)
 		return ;
 	popped = stack->top->next;
 	stack->top->next = popped->next;
-	// stack->top->prev = popped;
-	// popped->next = stack->top;   
-	// popped->prev = NULL;
-	// stack->top = popped;
 	dlst_add_front(&stack->top, popped);
 }
 
