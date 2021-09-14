@@ -6,13 +6,13 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:38:42 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/09/14 10:21:19 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/09/14 10:59:49 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <limits.h>
 #include "libft.h"
 #include "push_swap.h"
-#include <limits.h>
 
 static bool	num_isrepeat(t_stack *stack, long long num)
 {
@@ -52,9 +52,9 @@ void	parse_args(t_data *frame, int argc, const char **argv)
 	while (argc > 0)
 	{
 		num = ft_atoll(argv[argc]);
-		if (str_isvalid(argv[argc]) == false ||
-				num_isvalid(num) == false ||
-				num_isrepeat(&frame->a_stack, num) == true)
+		if (str_isvalid(argv[argc]) == false
+			|| num_isvalid(num) == false
+			|| num_isrepeat(&frame->a_stack, num) == true)
 			error_exit(frame);
 		stack_push(&frame->a_stack, dlst_new(num));
 		argc--;
