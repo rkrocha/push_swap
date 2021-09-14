@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:38:42 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/09/14 10:59:49 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/09/14 12:47:28 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include "push_swap.h"
 
-static bool	num_isrepeat(t_stack *stack, long long num)
+static bool	num_isunique(t_stack *stack, long long num)
 {
 	t_dlist	*tracker;
 
@@ -22,10 +22,10 @@ static bool	num_isrepeat(t_stack *stack, long long num)
 	while (tracker)
 	{
 		if (num == tracker->content)
-			return (true);
+			return (false);
 		tracker = tracker->next;
 	}
-	return (false);
+	return (true);
 }
 
 static bool	num_isvalid(long long num)
@@ -54,7 +54,7 @@ void	parse_args(t_data *frame, int argc, const char **argv)
 		num = ft_atoll(argv[argc]);
 		if (str_isvalid(argv[argc]) == false
 			|| num_isvalid(num) == false
-			|| num_isrepeat(&frame->a_stack, num) == true)
+			|| num_isunique(&frame->a_stack, num) == false)
 			error_exit(frame);
 		stack_push(&frame->a_stack, dlst_new(num));
 		argc--;
