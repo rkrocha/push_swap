@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 09:42:35 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/09/13 15:48:46 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/09/14 10:18:20 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ typedef struct s_data
 	t_stack	a_stack;
 	t_stack	b_stack;
 }	t_data;
+
+/*
+** parse_args.c::
+*/
+void	parse_args(t_data *frame, int argc, const char **argv);
 
 /*
 ** op_swap.c:
@@ -51,5 +56,11 @@ void	op_rr(t_data *frame);
 void	op_rra(t_data *frame);
 void	op_rrb(t_data *frame);
 void	op_rrr(t_data *frame);
+
+/*
+** utils.c:
+*/
+void	free_stacks(t_data *frame);
+void	error_exit(t_data *frame);
 
 #endif
