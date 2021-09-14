@@ -6,12 +6,14 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 14:57:33 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/09/14 10:39:17 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/09/14 11:16:13 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STACK_H
 # define STACK_H
+
+# include <stdbool.h>
 
 typedef struct s_dlist
 {
