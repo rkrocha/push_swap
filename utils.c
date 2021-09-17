@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 08:57:30 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/09/14 09:30:45 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/09/17 16:35:44 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,9 @@ void	error_exit(t_data *frame)
 	free_stacks(frame);
 	ft_putendl_fd("Error", 2);
 	exit(EXIT_FAILURE);
+}
+
+int	content(t_dlist *elem)
+{
+	return (elem->content);
 }
