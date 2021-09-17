@@ -6,7 +6,7 @@
 #    By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/13 15:08:13 by rkochhan          #+#    #+#              #
-#    Updated: 2021/09/14 08:57:49 by rkochhan         ###   ########.fr        #
+#    Updated: 2021/09/17 15:51:42 by rkochhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ CFLAGS	= -Wall -Werror -Wextra
 CDEBUG	= $(CFLAGS) -fsanitize=address -g -D PS_DEBUG=1
 
 SRC		= push_swap.c \
+			sort_small.c \
 			op_push.c \
 			op_swap.c \
 			op_rotate.c \

@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 09:42:35 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/09/14 10:18:20 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/09/17 16:35:59 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 #  define PS_DEBUG 0
 # endif
 
+# define A_STACK	frame->a_stack
+# define B_STACK	frame->b_stack
+
 # include "stack.h"
 
 typedef struct s_data
@@ -24,6 +27,11 @@ typedef struct s_data
 	t_stack	a_stack;
 	t_stack	b_stack;
 }	t_data;
+
+/*
+** sort_small.c:
+*/
+void	sort_small(t_data *frame);
 
 /*
 ** parse_args.c::
@@ -62,5 +70,6 @@ void	op_rrr(t_data *frame);
 */
 void	free_stacks(t_data *frame);
 void	error_exit(t_data *frame);
+int		content(t_dlist *elem);
 
 #endif
