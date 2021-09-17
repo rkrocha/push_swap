@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 09:23:35 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/09/14 11:23:57 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/09/17 16:16:46 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ static void	op_swap(t_stack *stack)
 		return ;
 	popped = stack->top->next;
 	stack->top->next = popped->next;
-	dlst_add_front(&stack->top, popped);
+	popped->next->prev = popped->prev;
+	stack_push(stack, popped);
+	(stack->len)--;
 }
 
 void	op_sa(t_data *frame)
