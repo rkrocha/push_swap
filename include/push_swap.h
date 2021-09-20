@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 09:42:35 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/09/17 16:35:59 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/09/20 09:25:21 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_data
 void	sort_small(t_data *frame);
 
 /*
-** parse_args.c::
+** parse_args.c:
 */
 void	parse_args(t_data *frame, int argc, const char **argv);
 
@@ -70,6 +70,6 @@ void	op_rrr(t_data *frame);
 */
 void	free_stacks(t_data *frame);
 void	error_exit(t_data *frame);
-int		content(t_dlist *elem);
+int		value(t_dlist *elem);
 
 #endif

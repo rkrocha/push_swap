@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 08:57:30 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/09/17 16:35:44 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/09/20 08:34:37 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	error_exit(t_data *frame)
 	exit(EXIT_FAILURE);
 }
 
-int	content(t_dlist *elem)
+int	value(t_dlist *elem)
 {
 	return (elem->content);
 }
