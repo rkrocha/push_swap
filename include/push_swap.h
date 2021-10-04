@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 09:42:35 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/09/20 09:25:21 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/09/20 10:31:39 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,13 @@ void	sort_small(t_data *frame);
 ** parse_args.c:
 */
 void	parse_args(t_data *frame, int argc, const char **argv);
+
+/*
+** op_utils.c:
+*/
+void	op_n(void (*op)(t_data *), int n, t_data *frame);
+void	op_nra(int n, t_data *frame);
+void	op_nrb(int n, t_data *frame);
 
 /*
 ** op_swap.c:
