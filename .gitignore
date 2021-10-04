@@ -1,5 +1,6 @@
 push_swap
 checker
+ps_test.py
 
 # Prerequisites
 *.d
