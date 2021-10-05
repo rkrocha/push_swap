@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 09:29:07 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/05 12:43:10 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/05 15:19:59 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	op_n(void (*op)(t_data *), int n, t_data *frame)
 */
 void	op_nra(int n, t_data *frame)
 {
+	if (n > A_STACK.len / 2)
+		n -= A_STACK.len;
 	if (n > 0)
 		op_n(op_ra, n, frame);
 	else if (n < 0)
@@ -39,6 +41,8 @@ void	op_nra(int n, t_data *frame)
 
 void	op_nrb(int n, t_data *frame)
 {
+	if (n > B_STACK.len / 2)
+		n -= B_STACK.len;
 	if (n > 0)
 		op_n(op_rb, n, frame);
 	else if (n < 0)

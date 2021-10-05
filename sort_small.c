@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 14:22:45 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/05 12:42:27 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/05 15:15:14 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,15 @@ void	sort_four_five(t_data *frame)
 	op_pb(frame);
 	if (stack_issorted(&A_STACK) == false)
 		sort_small(frame);
-	if (B_STACK.top > B_STACK.bottom)
+	if (value(B_STACK.top) > value(B_STACK.bottom))
 		op_sb(frame);
 	num_pos[0] = peek_num_position(&A_STACK, value(B_STACK.top));
 	num_pos[1] = peek_num_position(&A_STACK, value(B_STACK.bottom));
+	ft_putnbr(num_pos[0]);
+	ft_putnbr(num_pos[1]);
+	ft_putendl("");
 	op_pa_in_num_pos(num_pos[0], frame);
+	ft_putendl("mid");
 	op_pa_in_num_pos(num_pos[1] + num_pos[0], frame);
 	op_nra(peek_lowest_num_position(&A_STACK), frame);
 }

@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 07:42:16 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/05 12:41:11 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/05 14:58:17 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	peek_num_position(t_stack *stack, int num)
 		tracker = tracker->next;
 		pos++;
 	}
-	if (pos > stack->len / 2)
+	if (pos > (stack->len / 2) + 1)
 		pos -= stack->len;
 	return (pos);
 }
@@ -64,7 +64,7 @@ int	peek_lowest_num_position(t_stack *stack)
 		}
 		tracker = tracker->next;
 	}
-	if (lowest_pos > stack->len / 2)
+	if (lowest_pos > (stack->len / 2) + 1)
 		lowest_pos -= stack->len;
 	return (lowest_pos);
 }
