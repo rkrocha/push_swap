@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 14:57:33 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/09/14 11:16:13 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/05 09:49:46 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_dlist
 
 typedef struct s_stack
 {
-	size_t	len;
+	int		len;
 	t_dlist	*top;
 	t_dlist	*bottom;
 }	t_stack;
