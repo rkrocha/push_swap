@@ -1,17 +1,18 @@
 #!/bin/bash
-source assert.sh
 
-s_count=0
-f_count=0
+source assert.sh
+make || exit 1
+
+succ=0
+fail=0
+optm=0
 
 test_ok()
 {
-	result="$(./push_swap $@ | ./checker_linux $@)"
-	assert_eq $result "OK" "Failed test with args '$@'" \
-		&& log_success "Passed test with args '$@'" && ((s_count++)) \
-		|| ((f_count++))
-	echo
+	check="$(./push_swap $1 | ./checker_linux $1)"
+	assert_eq $check "OK" "Fail with args '$1'" && ((succ++)) || ((fail++))
 }
+
 
 test_ok "0"
 test_ok "1"
@@ -183,5 +184,6 @@ test_ok "5 4 2 3 1"
 test_ok "5 4 3 1 2"
 test_ok "5 4 3 2 1"
 
-echo $GREEN OK: $s_count
-echo $RED KO: $f_count
+echo
+echo $GREEN'OK:' $succ
+echo $RED'KO:' $fail
