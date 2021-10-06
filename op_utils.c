@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 09:29:07 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/05 15:19:59 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/06 10:28:43 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	op_pa_in_num_pos(int num_pos, t_data *frame)
 		if (num_pos == 1)
 			op_sa(frame);
 		else if (num_pos == -1)
-			op_rra(frame);
+			op_ra(frame);
 	}
 	else
 	{
