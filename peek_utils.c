@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 07:42:16 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/07 09:56:08 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/07 11:40:03 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,13 @@ int	peek_num_position(t_stack *stack, int num)
 	int		pos;
 	t_dlist	*tracker;
 
+	if (num < peek_smallest_num(stack, true))
+		return (peek_smallest_num(stack, false));
+	if (num > peek_largest_num(stack, true))
+		return (peek_largest_num(stack, false) + 1);
 	if (stack_issorted(stack) && num < value(stack->top))
 		return (0);
-	else if (stack_issorted(stack) && num > value(stack->bottom))
+	if (stack_issorted(stack) && num > value(stack->bottom))
 		return (-1);
 	tracker = stack->top->next;
 	pos = 1;
@@ -35,47 +39,60 @@ int	peek_num_position(t_stack *stack, int num)
 		tracker = tracker->next;
 		pos++;
 	}
-	if (pos > (stack->len / 2) + 1)
-		pos -= stack->len;
 	return (pos);
 }
 
 /*
-** Returns the position of the lowest number in a stack.
+** Returns the position of the smallest number in a stack.
 */
-int	peek_lowest_num_position(t_stack *stack)
+int	peek_smallest_num(t_stack *stack, bool return_num)
 {
 	t_dlist	*tracker;
-	int		lowest_num;
-	int		lowest_pos;
+	int		smallest_num;
+	int		smallest_pos;
 	int		i;
 
 	tracker = stack->top->next;
-	lowest_num = value(stack->top);
-	lowest_pos = 0;
+	smallest_num = value(stack->top);
+	smallest_pos = 0;
 	i = 0;
 	while (tracker)
 	{
 		i++;
-		if (lowest_num > value(tracker))
+		if (smallest_num > value(tracker))
 		{
-			lowest_num = value(tracker);
-			lowest_pos = i;
+			smallest_num = value(tracker);
+			smallest_pos = i;
 		}
 		tracker = tracker->next;
 	}
-	if (lowest_pos > (stack->len / 2) + 1)
-		lowest_pos -= stack->len;
-	return (lowest_pos);
+	if (return_num)
+		return (smallest_num);
+	return (smallest_pos);
 }
 
-// int	peek_lis(t_dlist *stack)
-// {
-// 	int		lis[3];
-// 	int		*lis_array;
-// 	t_dlist	*tracker;
+int	peek_largest_num(t_stack *stack, bool return_num)
+{
+	t_dlist	*tracker;
+	int		largest_num;
+	int		largest_pos;
+	int		i;
 
-
-// 	free(lis_array);
-// 	return (lis)
-// }
+	tracker = stack->top->next;
+	largest_num = value(stack->top);
+	largest_pos = 0;
+	i = 0;
+	while (tracker)
+	{
+		i++;
+		if (largest_num < value(tracker))
+		{
+			largest_num = value(tracker);
+			largest_pos = i;
+		}
+		tracker = tracker->next;
+	}
+	if (return_num)
+		return (largest_num);
+	return (largest_pos);
+}

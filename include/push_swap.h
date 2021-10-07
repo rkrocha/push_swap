@@ -6,16 +6,12 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 09:42:35 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/05 11:29:25 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/07 11:42:03 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
-# ifndef PS_DEBUG
-#  define PS_DEBUG 0
-# endif
 
 # define A_STACK	frame->a_stack
 # define B_STACK	frame->b_stack
@@ -42,7 +38,8 @@ void	parse_args(t_data *frame, int argc, const char **argv);
 ** peek_utils.c:
 */
 int		peek_num_position(t_stack *stack, int num);
-int		peek_lowest_num_position(t_stack *stack);
+int		peek_smallest_num(t_stack *stack, bool return_pos);
+int		peek_largest_num(t_stack *stack, bool return_pos);
 
 /*
 ** op_utils.c:
