@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 09:42:35 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/07 11:42:03 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/07 16:27:43 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ typedef struct s_data
 void	sort_small(t_data *frame);
 
 /*
+** sort_hundred.c:
+*/
+void	sort_hundred(t_data *frame);
+
+/*
 ** parse_args.c:
 */
 void	parse_args(t_data *frame, int argc, const char **argv);
@@ -38,8 +43,8 @@ void	parse_args(t_data *frame, int argc, const char **argv);
 ** peek_utils.c:
 */
 int		peek_num_position(t_stack *stack, int num);
-int		peek_smallest_num(t_stack *stack, bool return_pos);
-int		peek_largest_num(t_stack *stack, bool return_pos);
+int		peek_smallest_num(t_stack *stack, bool return_num);
+int		peek_largest_num(t_stack *stack, bool return_num);
 
 /*
 ** op_utils.c:

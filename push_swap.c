@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 08:10:25 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/07 11:42:33 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/07 14:02:48 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	sort_stack(t_data *frame)
 		return ;
 	if (A_STACK.len <= 5)
 		sort_small(frame);
-	// else if (A_STACK.len <= 100)
-	// 	sort_in_halves(frame);
+	else if (A_STACK.len <= 100)
+		sort_hundred(frame);
 	// else
 	// 	sort_in_quarters(frame);
 }

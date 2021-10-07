@@ -6,7 +6,7 @@
 #    By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/13 15:08:13 by rkochhan          #+#    #+#              #
-#    Updated: 2021/10/07 11:42:12 by rkochhan         ###   ########.fr        #
+#    Updated: 2021/10/07 14:06:14 by rkochhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ CDEBUG	= $(CFLAGS) -fsanitize=address -g
 
 SRC		= push_swap.c \
 			sort_small.c \
+			sort_hundred.c \
 			op_push.c \
 			op_swap.c \
 			op_rotate.c \
