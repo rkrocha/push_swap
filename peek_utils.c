@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 07:42:16 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/05 14:58:17 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/07 09:56:08 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	peek_num_position(t_stack *stack, int num)
 	int		pos;
 	t_dlist	*tracker;
 
-	if (num < value(stack->top))
+	if (stack_issorted(stack) && num < value(stack->top))
 		return (0);
-	else if (num > value(stack->bottom))
+	else if (stack_issorted(stack) && num > value(stack->bottom))
 		return (-1);
 	tracker = stack->top->next;
 	pos = 1;

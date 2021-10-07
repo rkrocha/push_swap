@@ -9,6 +9,7 @@ optm=0
 
 test_ok()
 {
+	ops=$(./push_swap $1)
 	check="$(./push_swap $1 | ./checker_linux $1)"
 	assert_eq $check "OK" "Fail with args '$1'" && ((succ++)) || ((fail++))
 }
@@ -183,6 +184,7 @@ test_ok "5 4 2 1 3"
 test_ok "5 4 2 3 1"
 test_ok "5 4 3 1 2"
 test_ok "5 4 3 2 1"
+test_ok "2147483647 -1 0 1 -2147483648"
 
 echo
 echo $GREEN'OK:' $succ
