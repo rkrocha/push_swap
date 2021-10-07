@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 08:10:25 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/09/17 16:42:48 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/07 11:42:33 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,6 @@ int	main(int argc, const char **argv)
 	ft_bzero(&frame, sizeof(frame));
 	parse_args(&frame, argc, argv);
 	sort_stack(&frame);
-	if (PS_DEBUG)
-	{
-		ft_putendl("");
-		stack_print(&frame.a_stack, "a"); // REMOVE
-		stack_print(&frame.b_stack, "b"); // REMOVE
-	}
 	free_stacks(&frame);
 	return (0);
 }

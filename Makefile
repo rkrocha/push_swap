@@ -6,7 +6,7 @@
 #    By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/13 15:08:13 by rkochhan          #+#    #+#              #
-#    Updated: 2021/10/05 09:48:12 by rkochhan         ###   ########.fr        #
+#    Updated: 2021/10/07 11:42:12 by rkochhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ INCLUDE	= -I $(LIBFT) -I include
 
 CC		= clang
 CFLAGS	= -Wall -Werror -Wextra
-CDEBUG	= $(CFLAGS) -fsanitize=address -g -D PS_DEBUG=1
+CDEBUG	= $(CFLAGS) -fsanitize=address -g
 
 SRC		= push_swap.c \
 			sort_small.c \
