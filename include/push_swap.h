@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 09:42:35 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/08 13:25:47 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/08 16:55:42 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@
 
 # include "stack.h"
 
+
+/*
+** chunk_max: maximum number of chunks
+** chunk_current: chunk iterator
+** chunk_nums: all integers pertaining to this chunk
+** chunk_size: the amount of integers inside chunk_nums
+** largest_num: the largest integer in any stack or chunk
+** sources: index 0 is its value, index 1 is its position in a_stack
+** destin: the positions where sources must be placed in b_stack
+*/
 typedef struct s_data
 {
 	t_stack	a_stack;
@@ -25,7 +35,11 @@ typedef struct s_data
 	int		chunk_max;
 	int		chunk_current;
 	int		chunk_nums[50];
+	int		chunk_size;
 	int		largest_num;
+	int		source_one[2];
+	int		source_two[2];
+	int		destin[2];
 }	t_data;
 
 /*
