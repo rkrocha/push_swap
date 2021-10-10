@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 09:29:07 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/07 09:59:01 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/10 08:48:43 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,14 @@ void	op_nrb(int n, t_data *frame)
 		op_n(op_rb, n, frame);
 	else if (n < 0)
 		op_n(op_rrb, -n, frame);
+}
+
+void	op_nrr(int n, t_data *frame)
+{
+	if (n > 0)
+		op_n(op_rr, n, frame);
+	else if (n < 0)
+		op_n(op_rrr, -n, frame);
 }
 
 void	op_pa_in_num_pos(int num_pos, t_data *frame)
