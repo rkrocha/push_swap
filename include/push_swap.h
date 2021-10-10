@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 09:42:35 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/10 09:13:24 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/10 15:38:46 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # define B_STACK	frame->b_stack
 
 # include "stack.h"
-
 
 /*
 ** chunk_max: maximum number of chunks
@@ -38,10 +37,10 @@ typedef struct s_data
 	int		chunk_nums[50];
 	int		chunk_size;
 	int		largest_num;
-	int		source_one[2];
-	int		source_two[2];
-	int		destin_one[2];
-	int		destin_two[2];
+	int		source_top[2];
+	int		destin_top[2];
+	int		source_bot[2];
+	int		destin_bot[2];
 	int		setup_actions[3];
 }	t_data;
 

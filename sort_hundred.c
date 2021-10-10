@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 14:01:29 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/10 14:07:05 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/10 16:06:00 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,8 @@ static void	peek_sources(t_data *frame)
 		tracker = tracker->next;
 		i++;
 	}
-	frame->source_one[0] = value(tracker);
-	frame->source_one[1] = i;
+	frame->source_top[0] = value(tracker);
+	frame->source_top[1] = i;
 	i = -1;
 	tracker = A_STACK.bottom;
 	while (tracker)
@@ -112,8 +112,8 @@ static void	peek_sources(t_data *frame)
 		tracker = tracker->prev;
 		i--;
 	}
-	frame->source_two[0] = value(tracker);
-	frame->source_two[1] = i;
+	frame->source_bot[0] = value(tracker);
+	frame->source_bot[1] = i;
 }
 
 static void	peek_destination(int source_num, int *destin, t_data *frame)
@@ -150,9 +150,9 @@ static void	optimize_setup(int *setup)
 	int	rr_count;
 
 	rr_count = 0;
-	if (setup[1] * setup[2] > 0)
+	if (setup[1] * setup[2] > 0 || setup[1] == setup[2])
 	{
-		if (ft_abs(setup[1]) < ft_abs(setup[2]))
+		if (ft_abs(setup[1]) <= ft_abs(setup[2]))
 			rr_count = setup[1];
 		else
 			rr_count = setup[2];
@@ -167,23 +167,23 @@ static void	calc_shortest_setup(t_data *frame)
 	int	setup_one[3];
 	int	setup_two[3];
 
-	setup_one[1] = frame->source_one[1];
-	if (ft_abs(frame->source_one[1] - A_STACK.len) < frame->source_one[1])
-		setup_one[1] = frame->source_one[1] - A_STACK.len;
+	setup_one[1] = frame->source_top[1];
+	if (ft_abs(frame->source_top[1] - A_STACK.len) < frame->source_top[1])
+		setup_one[1] = frame->source_top[1] - A_STACK.len;
 
-	setup_one[2] = frame->destin_one[0];
-	if (ft_abs(frame->destin_one[1]) < frame->destin_one[0])
-		setup_one[2] = frame->destin_one[1];
+	setup_one[2] = frame->destin_top[0];
+	if (ft_abs(frame->destin_top[1]) < frame->destin_top[0])
+		setup_one[2] = frame->destin_top[1];
 	optimize_setup(setup_one);
 
 
 
-	setup_two[1] = frame->source_two[1];
-	if (ft_abs(frame->source_two[1] - A_STACK.len) < frame->source_two[1])
-		setup_two[1] = frame->source_two[1] - A_STACK.len;
-	setup_two[2] = frame->destin_two[0];
-	if (ft_abs(frame->source_two[1]) < frame->source_two[0])
-		setup_two[2] = frame->destin_two[1];
+	setup_two[1] = frame->source_bot[1];
+	if (ft_abs(frame->source_bot[1] - A_STACK.len) < frame->source_bot[1])
+		setup_two[1] = frame->source_bot[1] - A_STACK.len;
+	setup_two[2] = frame->destin_bot[0];
+	if (ft_abs(frame->source_bot[1]) < frame->source_bot[0])
+		setup_two[2] = frame->destin_bot[1];
 	optimize_setup(setup_two);
 
 	frame->setup_actions[0] = setup_one[0];
@@ -213,8 +213,8 @@ void	sort_hundred(t_data *frame)
 		while (i < frame->chunk_size)
 		{
 			peek_sources(frame);
-			peek_destination(frame->source_one[0], frame->destin_one, frame);
-			peek_destination(frame->source_two[0], frame->destin_two, frame);
+			peek_destination(frame->source_top[0], frame->destin_top, frame);
+			peek_destination(frame->source_bot[0], frame->destin_bot, frame);
 			calc_shortest_setup(frame);
 
 			op_nrr(frame->setup_actions[0], frame);
