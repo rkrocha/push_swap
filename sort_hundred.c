@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 14:01:29 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/10 08:42:26 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/10 11:20:16 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,8 +141,37 @@ static void	peek_destination(int source_num, int *destin, t_data *frame)
 		destin[1]++;
 		tracker = tracker->next;
 	}
-	destin[0] += (source_num < closest_num);
+	destin[0] += (source_num < closest_num); ////    CHECK
 	destin[1] = B_STACK.len - destin[0];
+}
+
+static void	calc_shortest_setup(t_data *frame)
+{
+	int	setup_one[3];
+	// int	setup_two[3];
+
+	setup_one[1] = frame->source_one[1];
+	if (ft_abs(A_STACK.len - frame->source_one[1]) < frame->source_one[1])
+		setup_one[1] = A_STACK.len - frame->source_one[1];
+	setup_one[2] = frame->destin_one[0];
+	if (ft_abs(frame->source_one[1]) < frame->source_one[0])
+		setup_one[2] = frame->destin_one[1];
+	setup_one[0] = 0; ////    simplify setup one (make it use rr if possible)
+
+
+
+	// setup_two[1] = frame->source_two[1];
+	// if (ft_abs(A_STACK.len - frame->source_two[1] < frame->source_two[1]))
+	// 	setup_two[1] = A_STACK.len - frame->source_two[1];
+	// setup_two[2] = frame->destin_two[0];
+	// if (ft_abs(frame->source_two[1]) < frame->source_two[0])
+	// 	setup_two[2] = frame->destin_two[1];
+	// setup_two[0] = 0; /////   simplify
+
+
+	frame->setup_actions[1] = setup_one[1];
+	frame->setup_actions[2] = setup_one[2];
+
 }
 
 void	sort_hundred(t_data *frame)
@@ -160,7 +189,14 @@ void	sort_hundred(t_data *frame)
 		{
 			peek_sources(frame);
 			peek_destination(frame->source_one[0], frame->destin_one, frame);
-			peek_destination(frame->source_two[0], frame->destin_two, frame);
+			// peek_destination(frame->source_two[0], frame->destin_two, frame);
+			calc_shortest_setup(frame);
+
+
+			op_nra(frame->setup_actions[1], frame);
+			op_nrb(frame->setup_actions[2], frame);
+			op_pb(frame);
+
 			i++;
 		}
 		frame->chunk_current++;
