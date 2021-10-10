@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 14:01:29 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/10 16:41:01 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/10 18:18:41 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int	def_chunk_array(t_data *frame)
 static void	def_frame_params(t_data *frame)
 {
 	if (A_STACK.len <= 100)
-		frame->chunk_size = 22;
+		frame->chunk_size = 20;
 	else
 		frame->chunk_size = 50;
 	frame->max_chunks = A_STACK.len / frame->chunk_size + 1;
@@ -161,6 +161,10 @@ static void	optimize_setup(int *setup)
 		else
 			rr_count = setup[2];
 	}
+	// else
+	// {
+			///// case for setup1 * setup2 < 0
+	// }
 	setup[0] = rr_count;
 	setup[1] -= rr_count;
 	setup[2] -= rr_count;
@@ -186,7 +190,7 @@ static void	calc_shortest_setup(t_data *frame)
 	if (ft_abs(frame->source_bot[1] - A_STACK.len) < frame->source_bot[1])
 		setup_two[1] = frame->source_bot[1] - A_STACK.len;
 	setup_two[2] = frame->destin_bot[0];
-	if (ft_abs(frame->source_bot[1]) < frame->source_bot[0])
+	if (ft_abs(frame->destin_bot[1]) < frame->destin_bot[0])
 		setup_two[2] = frame->destin_bot[1];
 	optimize_setup(setup_two);
 
@@ -203,6 +207,15 @@ static void	calc_shortest_setup(t_data *frame)
 		frame->setup_actions[2] = setup_two[2];
 	}
 
+
+
+		ft_putendl("");
+		ft_putnbr(frame->setup_actions[0]);
+		ft_putchar(' ');
+		ft_putnbr(frame->setup_actions[1]);   //////////////////
+		ft_putchar(' ');
+		ft_putnbr(frame->setup_actions[2]);
+		ft_putendl("");
 }
 
 void	sort_hundred(t_data *frame)
