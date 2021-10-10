@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 14:01:29 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/10 11:20:16 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/10 11:29:12 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,8 +153,9 @@ static void	calc_shortest_setup(t_data *frame)
 	setup_one[1] = frame->source_one[1];
 	if (ft_abs(A_STACK.len - frame->source_one[1]) < frame->source_one[1])
 		setup_one[1] = A_STACK.len - frame->source_one[1];
+
 	setup_one[2] = frame->destin_one[0];
-	if (ft_abs(frame->source_one[1]) < frame->source_one[0])
+	if (ft_abs(frame->destin_one[1]) < frame->destin_one[0])
 		setup_one[2] = frame->destin_one[1];
 	setup_one[0] = 0; ////    simplify setup one (make it use rr if possible)
 
