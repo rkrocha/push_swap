@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 14:01:29 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/10 18:18:41 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/10 20:26:31 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	get_next_larger_num(int smaller_num, t_stack *stack)
 	larger_num = smaller_num;   ///// test this
 	while (tracker)
 	{
-		compare = value(tracker) - smaller_num;
+		compare = (long)value(tracker) - smaller_num;
 		if (compare > 0 && compare < diff)
 		{
 			larger_num = value(tracker);
@@ -133,7 +133,7 @@ static void	peek_destination(int source_num, int *destin, t_data *frame)
 	closest_num = source_num;
 	while (tracker)
 	{
-		compare = ft_abs(value(tracker) - source_num);
+		compare = ft_abs((long)value(tracker) - source_num);
 		if (compare < diff)
 		{
 			closest_num = value(tracker);
