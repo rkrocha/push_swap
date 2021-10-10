@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 09:42:35 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/10 08:50:08 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/10 09:13:24 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@
 ** chunk_nums: all integers pertaining to this chunk
 ** chunk_size: the amount of integers inside chunk_nums
 ** largest_num: the largest integer in any stack or chunk
-** sources: index 0 is its value, index 1 is its position in a_stack
-** destin: the positions where sources must be placed in b_stack
+** sources: [0] is its value, [1] is its position in a_stack
+** destin: the position where a source must be placed in b_stack
+** setup_actions: ops needed to set up a pb. [0] is rr, [1] is ra, [2] is rb
 */
 typedef struct s_data
 {
