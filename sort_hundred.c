@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 14:01:29 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/10 11:44:11 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/10 11:56:22 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,11 +148,11 @@ static void	peek_destination(int source_num, int *destin, t_data *frame)
 static void	calc_shortest_setup(t_data *frame)
 {
 	int	setup_one[3];
-	// int	setup_two[3];
+	int	setup_two[3];
 
 	setup_one[1] = frame->source_one[1];
-	if (ft_abs(A_STACK.len - frame->source_one[1]) < frame->source_one[1])
-		setup_one[1] = A_STACK.len - frame->source_one[1];
+	if (ft_abs(frame->source_one[1] - A_STACK.len) < frame->source_one[1])
+		setup_one[1] = frame->source_one[1] - A_STACK.len;
 
 	setup_one[2] = frame->destin_one[0];
 	if (ft_abs(frame->destin_one[1]) < frame->destin_one[0])
@@ -161,22 +161,22 @@ static void	calc_shortest_setup(t_data *frame)
 
 
 
-	// setup_two[1] = frame->source_two[1];
-	// if (ft_abs(A_STACK.len - frame->source_two[1] < frame->source_two[1]))
-	// 	setup_two[1] = A_STACK.len - frame->source_two[1];
-	// setup_two[2] = frame->destin_two[0];
-	// if (ft_abs(frame->source_two[1]) < frame->source_two[0])
-	// 	setup_two[2] = frame->destin_two[1];
-	// setup_two[0] = 0; /////   simplify
+	setup_two[1] = frame->source_two[1];
+	if (ft_abs(frame->source_two[1] - A_STACK.len) < frame->source_two[1])
+		setup_two[1] = frame->source_two[1] - A_STACK.len;
+	setup_two[2] = frame->destin_two[0];
+	if (ft_abs(frame->source_two[1]) < frame->source_two[0])
+		setup_two[2] = frame->destin_two[1];
+	setup_two[0] = 0; /////   simplify
 
 
 	frame->setup_actions[1] = setup_one[1];
 	frame->setup_actions[2] = setup_one[2];
-	// if (ft_abs(setup_one[1]) + ft_abs(setup_one[2]) > (ft_abs(setup_two[1]) + ft_abs(setup_two[2])))
-	// {
-	// 	frame->setup_actions[1] = setup_two[1];
-	// 	frame->setup_actions[2] = setup_two[2];
-	// }
+	if (ft_abs(setup_one[1]) + ft_abs(setup_one[2]) > (ft_abs(setup_two[1]) + ft_abs(setup_two[2])))
+	{
+		frame->setup_actions[1] = setup_two[1];
+		frame->setup_actions[2] = setup_two[2];
+	}
 
 }
 
@@ -195,7 +195,7 @@ void	sort_hundred(t_data *frame)
 		{
 			peek_sources(frame);
 			peek_destination(frame->source_one[0], frame->destin_one, frame);
-			// peek_destination(frame->source_two[0], frame->destin_two, frame);
+			peek_destination(frame->source_two[0], frame->destin_two, frame);
 			calc_shortest_setup(frame);
 
 
@@ -207,4 +207,6 @@ void	sort_hundred(t_data *frame)
 		}
 		frame->chunk_current++;
 	}
+	op_nrb(peek_largest_num(&B_STACK, false), frame);
+	op_n(op_pa, B_STACK.len, frame);
 }
