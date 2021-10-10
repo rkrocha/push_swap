@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 14:01:29 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/10 11:29:12 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/10 11:44:11 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ static void	peek_destination(int source_num, int *destin, t_data *frame)
 		tracker = tracker->next;
 	}
 	destin[0] += (source_num < closest_num); ////    CHECK
-	destin[1] = B_STACK.len - destin[0];
+	destin[1] = destin[0] - B_STACK.len;
 }
 
 static void	calc_shortest_setup(t_data *frame)
@@ -172,6 +172,11 @@ static void	calc_shortest_setup(t_data *frame)
 
 	frame->setup_actions[1] = setup_one[1];
 	frame->setup_actions[2] = setup_one[2];
+	// if (ft_abs(setup_one[1]) + ft_abs(setup_one[2]) > (ft_abs(setup_two[1]) + ft_abs(setup_two[2])))
+	// {
+	// 	frame->setup_actions[1] = setup_two[1];
+	// 	frame->setup_actions[2] = setup_two[2];
+	// }
 
 }
 
