@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 14:01:29 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/10 11:56:22 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/10 14:07:05 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,23 @@ static void	peek_destination(int source_num, int *destin, t_data *frame)
 	destin[1] = destin[0] - B_STACK.len;
 }
 
+static void	optimize_setup(int *setup)
+{
+	int	rr_count;
+
+	rr_count = 0;
+	if (setup[1] * setup[2] > 0)
+	{
+		if (ft_abs(setup[1]) < ft_abs(setup[2]))
+			rr_count = setup[1];
+		else
+			rr_count = setup[2];
+	}
+	setup[0] = rr_count;
+	setup[1] -= rr_count;
+	setup[2] -= rr_count;
+}
+
 static void	calc_shortest_setup(t_data *frame)
 {
 	int	setup_one[3];
@@ -157,7 +174,7 @@ static void	calc_shortest_setup(t_data *frame)
 	setup_one[2] = frame->destin_one[0];
 	if (ft_abs(frame->destin_one[1]) < frame->destin_one[0])
 		setup_one[2] = frame->destin_one[1];
-	setup_one[0] = 0; ////    simplify setup one (make it use rr if possible)
+	optimize_setup(setup_one);
 
 
 
@@ -167,13 +184,15 @@ static void	calc_shortest_setup(t_data *frame)
 	setup_two[2] = frame->destin_two[0];
 	if (ft_abs(frame->source_two[1]) < frame->source_two[0])
 		setup_two[2] = frame->destin_two[1];
-	setup_two[0] = 0; /////   simplify
+	optimize_setup(setup_two);
 
-
+	frame->setup_actions[0] = setup_one[0];
 	frame->setup_actions[1] = setup_one[1];
 	frame->setup_actions[2] = setup_one[2];
-	if (ft_abs(setup_one[1]) + ft_abs(setup_one[2]) > (ft_abs(setup_two[1]) + ft_abs(setup_two[2])))
+	if (ft_abs(setup_one[0]) + ft_abs(setup_one[1]) + ft_abs(setup_one[2])
+		> (ft_abs(setup_two[0]) + ft_abs(setup_two[1]) + ft_abs(setup_two[2])))
 	{
+		frame->setup_actions[0] = setup_two[0];
 		frame->setup_actions[1] = setup_two[1];
 		frame->setup_actions[2] = setup_two[2];
 	}
@@ -198,7 +217,7 @@ void	sort_hundred(t_data *frame)
 			peek_destination(frame->source_two[0], frame->destin_two, frame);
 			calc_shortest_setup(frame);
 
-
+			op_nrr(frame->setup_actions[0], frame);
 			op_nra(frame->setup_actions[1], frame);
 			op_nrb(frame->setup_actions[2], frame);
 			op_pb(frame);
