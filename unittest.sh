@@ -17,7 +17,7 @@ test_optm()
 
 test_assert()
 {
-	assert_eq "$1" "OK" "Failed with args '$1'" && ((++pass)) && return 0
+	assert_eq "$1" "OK" "Failed with args '$2'" && ((++pass)) && return 0
 	((fail++))
 }
 
@@ -28,7 +28,7 @@ test_act()
 
 	[ -z $check ] && [ $2 == 0 ] && check="OK"
 
-	test_assert $check
+	test_assert $check "$1"
 
 	[ $check == "OK" 2>/dev/null ] && test_optm $(echo "$ops" | wc -w) $2 "$1"
 }
