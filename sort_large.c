@@ -28,6 +28,7 @@ static void	def_frame_params(t_data *frame)
 static void	optimize_setup(int *setup, t_data *frame)
 {
 	int	rr_count;
+	int	cutoff;
 
 	rr_count = 0;
 	if (setup[1] * setup[2] > 0 || setup[1] == setup[2])
@@ -44,7 +45,11 @@ static void	optimize_setup(int *setup, t_data *frame)
 	setup[0] = rr_count;
 	setup[1] -= rr_count;
 	setup[2] -= rr_count;
-	if (setup[2] > frame->max_chunks * 1.5) ///// 7 = magic number for 100 sort
+	if (frame->chunk_size == 20)
+		cutoff = 7;
+	else
+		cutoff = 11;
+	if (setup[2] > cutoff)
 		setup[2] = 0;
 }
 
