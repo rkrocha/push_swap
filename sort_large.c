@@ -44,6 +44,8 @@ static void	optimize_setup(int *setup)
 	setup[0] = rr_count;
 	setup[1] -= rr_count;
 	setup[2] -= rr_count;
+	if (setup[2] > 4)
+		setup[2] = 0;
 }
 
 static void	calc_shortest_setup(t_data *frame)
@@ -117,8 +119,14 @@ void	sort_large(t_data *frame)
 			op_pb(frame);
 			i++;
 		}
+		op_nrb(peek_largest_num(&B_STACK, false), frame);
 		frame->iter_chunks++;
 	}
-	op_nrb(peek_largest_num(&B_STACK, false), frame);
-	op_n(op_pa, B_STACK.len, frame);
+
+
+	while (B_STACK.len > 0)
+	{
+		op_nrb(peek_largest_num(&B_STACK, false), frame);
+		op_pa(frame);
+	}
 }
