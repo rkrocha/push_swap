@@ -6,7 +6,7 @@
 #    By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/13 15:08:13 by rkochhan          #+#    #+#              #
-#    Updated: 2021/10/10 21:47:17 by rkochhan         ###   ########.fr        #
+#    Updated: 2021/10/11 10:52:56 by rkochhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,8 @@ SRC		= push_swap.c \
 			op_swap.c \
 			op_rotate.c \
 			op_reverse_rotate.c \
+			chunks.c \
+			chunks_utils.c \
 			op_utils.c \
 			peek_utils.c \
 			parse_args.c \

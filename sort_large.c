@@ -13,54 +13,6 @@
 #include "libft.h"
 #include "push_swap.h"
 
-static int	get_next_larger_num(int smaller_num, t_stack *stack)
-{
-	t_dlist	*tracker;
-	long	compare;
-	long	diff;
-	int		larger_num;
-
-	tracker = stack->top;
-	diff = 9223372036854775807; ///   long max?
-	larger_num = smaller_num;
-	while (tracker)
-	{
-		compare = (long)value(tracker) - smaller_num;
-		if (compare > 0 && compare < diff)
-		{
-			larger_num = value(tracker);
-			diff = compare;
-		}
-		if (diff == 1)
-			break ;
-		tracker = tracker->next;
-	}
-	return (larger_num);
-}
-
-static int	def_chunk_array(t_data *frame)
-{
-	static int	smallest;
-	int			count;
-
-	count = 0;
-	if (frame->iter_chunks == 0)
-	{
-		smallest = peek_smallest_num(&A_STACK, true);
-		frame->chunk_array[count] = smallest;
-		count++;
-	}
-	while (count < frame->chunk_size)
-	{
-		smallest = get_next_larger_num(smallest, &A_STACK);
-		frame->chunk_array[count] = smallest;
-		count++;
-		if (smallest == frame->largest_num)
-			break ;
-	}
-	return (count);
-}
-
 static void	def_frame_params(t_data *frame)
 {
 	if (A_STACK.len <= 100)
@@ -71,82 +23,6 @@ static void	def_frame_params(t_data *frame)
 	if (A_STACK.len % frame->chunk_size == 0)
 		frame->max_chunks--;
 	frame->largest_num = peek_largest_num(&A_STACK, true);
-}
-
-
-
-
-
-static bool	in_chunk(int num, t_data *frame)
-{
-	int	i;
-
-	i = 0;
-	while (i < frame->chunk_len)
-	{
-		if (num == frame->chunk_array[i])
-			return (true);
-		i++;
-	}
-	return (false);
-}
-
-static void	peek_sources(t_data *frame)
-{
-	t_dlist	*tracker;
-	int		i;
-
-	i = 0;
-	tracker = A_STACK.top;
-	while (tracker)
-	{
-		if (in_chunk(value(tracker), frame))
-			break ;
-		tracker = tracker->next;
-		i++;
-	}
-	frame->source_top[0] = value(tracker);
-	frame->source_top[1] = i;
-	i = -1;
-	tracker = A_STACK.bottom;
-	while (tracker)
-	{
-		if (in_chunk(value(tracker), frame))
-			break ;
-		tracker = tracker->prev;
-		i--;
-	}
-	frame->source_bot[0] = value(tracker);
-	frame->source_bot[1] = i;
-}
-
-static void	peek_destination(int source_num, int *destin, t_data *frame)
-{
-	t_dlist	*tracker;
-	long	compare;
-	long	diff;
-	int		closest_num;
-
-	ft_bzero(destin, sizeof(destin));
-	tracker = B_STACK.top;
-	diff = 9223372036854775807; ///   long max?
-	closest_num = source_num;
-	while (tracker)
-	{
-		compare = ft_abs((long)value(tracker) - source_num);
-		if (compare < diff)
-		{
-			closest_num = value(tracker);
-			diff = compare;
-			destin[0] = destin[1];
-		}
-		if (diff == 1)
-			break ;
-		destin[1]++;
-		tracker = tracker->next;
-	}
-	destin[0] += (source_num < closest_num);
-	destin[1] = destin[0] - B_STACK.len;
 }
 
 static void	optimize_setup(int *setup)

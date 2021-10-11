@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 09:42:35 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/10 21:33:34 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/11 10:53:30 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,17 @@ void	sort_small(t_data *frame);
 ** sort_large.c:
 */
 void	sort_large(t_data *frame);
+
+/*
+** chunks.c:
+*/
+int		def_chunk_array(t_data *frame);
+
+/*
+** chunks_utils.c:
+*/
+void	peek_sources(t_data *frame);
+void	peek_destination(int source_num, int *destin, t_data *frame);
 
 /*
 ** parse_args.c:
