@@ -25,7 +25,7 @@ static void	def_frame_params(t_data *frame)
 	frame->largest_num = peek_largest_num(&A_STACK, true);
 }
 
-static void	optimize_setup(int *setup)
+static void	optimize_setup(int *setup, t_data *frame)
 {
 	int	rr_count;
 
@@ -44,7 +44,7 @@ static void	optimize_setup(int *setup)
 	setup[0] = rr_count;
 	setup[1] -= rr_count;
 	setup[2] -= rr_count;
-	if (setup[2] > 4)
+	if (setup[2] > frame->max_chunks * 1.5) ///// 7 = magic number for 100 sort
 		setup[2] = 0;
 }
 
@@ -60,7 +60,7 @@ static void	calc_shortest_setup(t_data *frame)
 	setup_one[2] = frame->destin_top[0];
 	if (ft_abs(frame->destin_top[1]) < frame->destin_top[0])
 		setup_one[2] = frame->destin_top[1];
-	optimize_setup(setup_one);
+	optimize_setup(setup_one, frame);
 
 
 
@@ -70,7 +70,7 @@ static void	calc_shortest_setup(t_data *frame)
 	setup_two[2] = frame->destin_bot[0];
 	if (ft_abs(frame->destin_bot[1]) < frame->destin_bot[0])
 		setup_two[2] = frame->destin_bot[1];
-	optimize_setup(setup_two);
+	optimize_setup(setup_two, frame);
 
 
 
