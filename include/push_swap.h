@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 09:42:35 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/10 16:31:41 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/10 21:33:34 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_data
 	int		max_chunks;
 	int		iter_chunks;
 	int		chunk_size;
-	int		chunk_array[50];
+	int		chunk_array[45];
 	int		chunk_len;
 	int		largest_num;
 	int		source_top[2];
@@ -52,9 +52,9 @@ typedef struct s_data
 void	sort_small(t_data *frame);
 
 /*
-** sort_hundred.c:
+** sort_large.c:
 */
-void	sort_hundred(t_data *frame);
+void	sort_large(t_data *frame);
 
 /*
 ** parse_args.c:

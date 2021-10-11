@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_hundred.c                                     :+:      :+:    :+:   */
+/*   sort_large.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 14:01:29 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/10 20:26:31 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/10 21:23:32 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	get_next_larger_num(int smaller_num, t_stack *stack)
 
 	tracker = stack->top;
 	diff = 9223372036854775807; ///   long max?
-	larger_num = smaller_num;   ///// test this
+	larger_num = smaller_num;
 	while (tracker)
 	{
 		compare = (long)value(tracker) - smaller_num;
@@ -66,7 +66,7 @@ static void	def_frame_params(t_data *frame)
 	if (A_STACK.len <= 100)
 		frame->chunk_size = 20;
 	else
-		frame->chunk_size = 50;
+		frame->chunk_size = 45;
 	frame->max_chunks = A_STACK.len / frame->chunk_size + 1;
 	if (A_STACK.len % frame->chunk_size == 0)
 		frame->max_chunks--;
@@ -209,16 +209,16 @@ static void	calc_shortest_setup(t_data *frame)
 
 
 
-		ft_putendl("");
-		ft_putnbr(frame->setup_actions[0]);
-		ft_putchar(' ');
-		ft_putnbr(frame->setup_actions[1]);   //////////////////
-		ft_putchar(' ');
-		ft_putnbr(frame->setup_actions[2]);
-		ft_putendl("");
+		// ft_putendl("");
+		// ft_putnbr(frame->setup_actions[0]);
+		// ft_putchar(' ');
+		// ft_putnbr(frame->setup_actions[1]);   //////////////////
+		// ft_putchar(' ');
+		// ft_putnbr(frame->setup_actions[2]);
+		// ft_putendl("");
 }
 
-void	sort_hundred(t_data *frame)
+void	sort_large(t_data *frame)
 {
 	int	i;
 
