@@ -28,7 +28,7 @@ static void	def_frame_params(t_data *frame)
 static void	optimize_setup(int *setup, t_data *frame)
 {
 	int	rr_count;
-	int	cutoff;
+	int	rb_cutoff;
 
 	rr_count = 0;
 	if (setup[1] * setup[2] > 0 || setup[1] == setup[2])
@@ -45,12 +45,31 @@ static void	optimize_setup(int *setup, t_data *frame)
 	setup[0] = rr_count;
 	setup[1] -= rr_count;
 	setup[2] -= rr_count;
+	rb_cutoff = 999;
 	if (frame->chunk_size == 20)
-		cutoff = 7;
+		rb_cutoff = 7;
 	else
-		cutoff = 11;
-	if (setup[2] > cutoff)
+		rb_cutoff = 11;
+	if (setup[2] > rb_cutoff)
 		setup[2] = 0;
+}
+
+static void	choose_setup(int *s_one, int *s_two, t_data *frame)
+{
+	int	setup_one_moves;
+	int	setup_two_moves;
+
+	setup_one_moves = ft_abs(s_one[0]) + ft_abs(s_one[1]) + ft_abs(s_one[2]);
+	setup_two_moves = ft_abs(s_two[0]) + ft_abs(s_two[1]) + ft_abs(s_two[2]);
+	frame->setup_actions[0] = s_one[0];
+	frame->setup_actions[1] = s_one[1];
+	frame->setup_actions[2] = s_one[2];
+	if (setup_one_moves > setup_two_moves)
+	{
+		frame->setup_actions[0] = s_two[0];
+		frame->setup_actions[1] = s_two[1];
+		frame->setup_actions[2] = s_two[2];
+	}
 }
 
 static void	calc_shortest_setup(t_data *frame)
@@ -77,18 +96,7 @@ static void	calc_shortest_setup(t_data *frame)
 		setup_two[2] = frame->destin_bot[1];
 	optimize_setup(setup_two, frame);
 
-
-
-	frame->setup_actions[0] = setup_one[0];
-	frame->setup_actions[1] = setup_one[1];
-	frame->setup_actions[2] = setup_one[2];
-	if (ft_abs(setup_one[0]) + ft_abs(setup_one[1]) + ft_abs(setup_one[2])
-		> (ft_abs(setup_two[0]) + ft_abs(setup_two[1]) + ft_abs(setup_two[2])))
-	{
-		frame->setup_actions[0] = setup_two[0];
-		frame->setup_actions[1] = setup_two[1];
-		frame->setup_actions[2] = setup_two[2];
-	}
+	choose_setup(setup_one, setup_two, frame);
 
 
 
