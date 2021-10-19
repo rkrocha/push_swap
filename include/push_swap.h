@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 09:42:35 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/11 10:53:30 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/15 10:53:52 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_data
 {
 	t_stack	a_stack;
 	t_stack	b_stack;
+	int		lis;
+	int		lds;
 	int		max_chunks;
 	int		iter_chunks;
 	int		chunk_size;
@@ -60,6 +62,7 @@ void	sort_large(t_data *frame);
 ** chunks.c:
 */
 int		def_chunk_array(t_data *frame);
+void	def_chunks_params(t_data *frame);
 
 /*
 ** chunks_utils.c:
@@ -78,6 +81,8 @@ void	parse_args(t_data *frame, int argc, const char **argv);
 int		peek_num_position(t_stack *stack, int num);
 int		peek_smallest_num(t_stack *stack, bool return_num);
 int		peek_largest_num(t_stack *stack, bool return_num);
+void	peek_lis(t_stack *stack, t_data *frame);
+void	peek_lds(t_stack *stack, t_data *frame);
 
 /*
 ** op_utils.c:

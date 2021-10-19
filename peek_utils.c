@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 07:42:16 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/11 10:52:03 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/15 13:20:45 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,84 @@ int	peek_largest_num(t_stack *stack, bool return_num)
 	if (return_num)
 		return (largest_num);
 	return (largest_pos);
+}
+
+static int	peek_single_lis(t_stack *stack, t_dlist *tracker)
+{
+	int		lis;
+	int		num;
+	int		i;
+
+	lis = 0;
+	num = value(tracker);
+	i = 0;
+	while (i < stack->len)
+	{
+		if (value(tracker) > num)
+		{
+			num = value(tracker);
+			lis++;
+		}
+		if (tracker->next)
+			tracker = tracker->next;
+		else
+			tracker = stack->top;
+		i++;
+	}
+	return (lis);
+}
+
+void	peek_lis(t_stack *stack, t_data *frame)
+{
+	t_dlist	*tracker;
+	int		temp_lis;
+
+	tracker = stack->top;
+	while (tracker)
+	{
+		temp_lis = peek_single_lis(&A_STACK, tracker);
+		if (temp_lis > frame->lis)
+			frame->lis = temp_lis;
+		tracker = tracker->next;
+	}
+}
+
+static int	peek_single_lds(t_stack *stack, t_dlist *tracker)
+{
+	int		lds;
+	int		num;
+	int		i;
+
+	lds = 0;
+	num = value(tracker);
+	i = 0;
+	while (i < stack->len)
+	{
+		if (value(tracker) < num)
+		{
+			num = value(tracker);
+			lds++;
+		}
+		if (tracker->next)
+			tracker = tracker->next;
+		else
+			tracker = stack->top;
+		i++;
+	}
+	return (lds);
+}
+
+void	peek_lds(t_stack *stack, t_data *frame)
+{
+	t_dlist	*tracker;
+	int		temp_lds;
+
+	tracker = stack->top;
+	while (tracker)
+	{
+		temp_lds = peek_single_lds(&A_STACK, tracker);
+		if (temp_lds > frame->lds)
+			frame->lds = temp_lds;
+		tracker = tracker->next;
+	}
 }

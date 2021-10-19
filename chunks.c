@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 10:44:23 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/11 11:02:38 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/19 15:41:52 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,18 @@ int	def_chunk_array(t_data *frame)
 			break ;
 	}
 	return (count);
+}
+
+void	def_chunks_params(t_data *frame)
+{
+	peek_lis(&A_STACK, frame);
+	peek_lds(&A_STACK, frame);
+	if (A_STACK.len <= 100)
+		frame->chunk_size = 20;
+	else
+		frame->chunk_size = 45;
+	frame->max_chunks = A_STACK.len / frame->chunk_size + 1;
+	if (A_STACK.len % frame->chunk_size == 0)
+		frame->max_chunks--;
+	frame->largest_num = peek_largest_num(&A_STACK, true);
 }
