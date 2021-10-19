@@ -482,7 +482,7 @@ test_ok "-115 121 -208 -8 222 -221 249 33 -114 224 -48 -108 61 188 -124 168 -68 
 
 
 
-norminette &>/dev/null && echo -e '\n'${YELLOW}Norme: pass'\n' || echo -e '\n'${RED}Norme: fail'\n'
+norminette &>/dev/null && echo -e '\n'${GREEN}Norme: pass'\n' || echo -e '\n'${RED}Norme: fail'\n'
 
 echo ${RED}KO: $fail
 echo ${YELLOW}OP: $optm
