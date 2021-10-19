@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 14:22:45 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/07 11:40:13 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/19 16:04:21 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,24 @@ void	sort_two(t_data *frame)
 
 void	sort_three(t_data *frame)
 {
-	if (value(A_STACK.top) > value(A_STACK.top->next)
-		&& value(A_STACK.top->next) < value(A_STACK.bottom)
-		&& value(A_STACK.bottom) > value(A_STACK.top))
+	if (value(frame->a_stack.top) > value(frame->a_stack.top->next)
+		&& value(frame->a_stack.top->next) < value(frame->a_stack.bottom)
+		&& value(frame->a_stack.bottom) > value(frame->a_stack.top))
 		op_sa(frame);
-	else if (value(A_STACK.top) > value(A_STACK.top->next)
-		&& value(A_STACK.top->next) > value(A_STACK.bottom)
-		&& value(A_STACK.bottom) < value(A_STACK.top))
+	else if (value(frame->a_stack.top) > value(frame->a_stack.top->next)
+		&& value(frame->a_stack.top->next) > value(frame->a_stack.bottom)
+		&& value(frame->a_stack.bottom) < value(frame->a_stack.top))
 	{
 		op_sa(frame);
 		op_rra(frame);
 	}
-	else if (value(A_STACK.top) > value(A_STACK.top->next)
-		&& value(A_STACK.top->next) < value(A_STACK.bottom)
-		&& value(A_STACK.bottom) < value(A_STACK.top))
+	else if (value(frame->a_stack.top) > value(frame->a_stack.top->next)
+		&& value(frame->a_stack.top->next) < value(frame->a_stack.bottom)
+		&& value(frame->a_stack.bottom) < value(frame->a_stack.top))
 		op_ra(frame);
-	else if (value(A_STACK.top) < value(A_STACK.top->next)
-		&& value(A_STACK.top->next) > value(A_STACK.bottom)
-		&& value(A_STACK.bottom) > value(A_STACK.top))
+	else if (value(frame->a_stack.top) < value(frame->a_stack.top->next)
+		&& value(frame->a_stack.top->next) > value(frame->a_stack.bottom)
+		&& value(frame->a_stack.bottom) > value(frame->a_stack.top))
 	{
 		op_sa(frame);
 		op_ra(frame);
@@ -52,20 +52,20 @@ void	sort_four_five(t_data *frame)
 
 	op_pb(frame);
 	op_pb(frame);
-	if (stack_issorted(&A_STACK) == false)
+	if (stack_issorted(&frame->a_stack) == false)
 		sort_small(frame);
-	num_pos = peek_num_position(&A_STACK, value(B_STACK.top));
+	num_pos = peek_num_position(&frame->a_stack, value(frame->b_stack.top));
 	op_pa_in_num_pos(num_pos, frame);
-	num_pos = peek_num_position(&A_STACK, value(B_STACK.top));
+	num_pos = peek_num_position(&frame->a_stack, value(frame->b_stack.top));
 	op_pa_in_num_pos(num_pos, frame);
-	op_nra(peek_smallest_num(&A_STACK, false), frame);
+	op_nra(peek_smallest_num(&frame->a_stack, false), frame);
 }
 
 void	sort_small(t_data *frame)
 {
-	if (A_STACK.len == 2)
+	if (frame->a_stack.len == 2)
 		sort_two(frame);
-	else if (A_STACK.len == 3)
+	else if (frame->a_stack.len == 3)
 		sort_three(frame);
 	else
 		sort_four_five(frame);

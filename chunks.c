@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 10:44:23 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/19 15:43:12 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/19 16:04:02 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ int	def_chunk_array(t_data *frame)
 	count = 0;
 	if (frame->iter_chunks == 0)
 	{
-		smallest = peek_smallest_num(&A_STACK, true);
+		smallest = peek_smallest_num(&frame->a_stack, true);
 		frame->chunk_array[count] = smallest;
 		count++;
 	}
 	while (count < frame->chunk_size)
 	{
-		smallest = peek_next_larger_num(smallest, &A_STACK);
+		smallest = peek_next_larger_num(smallest, &frame->a_stack);
 		frame->chunk_array[count] = smallest;
 		count++;
 		if (smallest == frame->largest_num)
@@ -63,12 +63,12 @@ int	def_chunk_array(t_data *frame)
 
 void	def_chunks_params(t_data *frame)
 {
-	if (A_STACK.len <= 100)
+	if (frame->a_stack.len <= 100)
 		frame->chunk_size = 20;
 	else
 		frame->chunk_size = 45;
-	frame->max_chunks = A_STACK.len / frame->chunk_size + 1;
-	if (A_STACK.len % frame->chunk_size == 0)
+	frame->max_chunks = frame->a_stack.len / frame->chunk_size + 1;
+	if (frame->a_stack.len % frame->chunk_size == 0)
 		frame->max_chunks--;
-	frame->largest_num = peek_largest_num(&A_STACK, true);
+	frame->largest_num = peek_largest_num(&frame->a_stack, true);
 }

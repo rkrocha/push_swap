@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 08:10:25 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/10 21:45:35 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/19 16:04:02 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 static void	sort_stack(t_data *frame)
 {
-	if (A_STACK.len == 1 || stack_issorted(&A_STACK) == true)
+	if (frame->a_stack.len == 1 || stack_issorted(&frame->a_stack) == true)
 		return ;
-	if (A_STACK.len <= 5)
+	if (frame->a_stack.len <= 5)
 		sort_small(frame);
-	else if (A_STACK.len <= 500)
+	else
 		sort_large(frame);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 10:52:20 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/11 10:59:58 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/19 16:04:21 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	peek_sources(t_data *frame)
 	int		i;
 
 	i = 0;
-	tracker = A_STACK.top;
+	tracker = frame->a_stack.top;
 	while (tracker)
 	{
 		if (in_chunk(value(tracker), frame))
@@ -44,7 +44,7 @@ void	peek_sources(t_data *frame)
 	frame->source_top[0] = value(tracker);
 	frame->source_top[1] = i;
 	i = -1;
-	tracker = A_STACK.bottom;
+	tracker = frame->a_stack.bottom;
 	while (tracker)
 	{
 		if (in_chunk(value(tracker), frame))
@@ -64,7 +64,7 @@ void	peek_destination(int source_num, int *destin, t_data *frame)
 	int		closest_num;
 
 	ft_bzero(destin, sizeof(destin));
-	tracker = B_STACK.top;
+	tracker = frame->b_stack.top;
 	diff = 9223372036854775807;
 	closest_num = source_num;
 	while (tracker)
@@ -82,5 +82,5 @@ void	peek_destination(int source_num, int *destin, t_data *frame)
 		tracker = tracker->next;
 	}
 	destin[0] += (source_num < closest_num);
-	destin[1] = destin[0] - B_STACK.len;
+	destin[1] = destin[0] - frame->b_stack.len;
 }

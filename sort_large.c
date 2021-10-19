@@ -62,15 +62,17 @@ static void	calc_shortest_setup(t_data *frame)
 	int	setup_two[3];
 
 	setup_one[1] = frame->source_top[1];
-	if (ft_abs(frame->source_top[1] - A_STACK.len) < frame->source_top[1])
-		setup_one[1] = frame->source_top[1] - A_STACK.len;
+	if (ft_abs(frame->source_top[1] - frame->a_stack.len)
+		< frame->source_top[1])
+		setup_one[1] = frame->source_top[1] - frame->a_stack.len;
 	setup_one[2] = frame->destin_top[0];
 	if (ft_abs(frame->destin_top[1]) < frame->destin_top[0])
 		setup_one[2] = frame->destin_top[1];
 	optimize_setup(setup_one, frame);
 	setup_two[1] = frame->source_bot[1];
-	if (ft_abs(frame->source_bot[1] - A_STACK.len) < frame->source_bot[1])
-		setup_two[1] = frame->source_bot[1] - A_STACK.len;
+	if (ft_abs(frame->source_bot[1] - frame->a_stack.len)
+		< frame->source_bot[1])
+		setup_two[1] = frame->source_bot[1] - frame->a_stack.len;
 	setup_two[2] = frame->destin_bot[0];
 	if (ft_abs(frame->destin_bot[1]) < frame->destin_bot[0])
 		setup_two[2] = frame->destin_bot[1];
@@ -106,12 +108,12 @@ void	sort_large(t_data *frame)
 			pre_sort(frame);
 			i++;
 		}
-		op_nrb(peek_largest_num(&B_STACK, false), frame);
+		op_nrb(peek_largest_num(&frame->b_stack, false), frame);
 		frame->iter_chunks++;
 	}
-	while (B_STACK.len > 0)
+	while (frame->b_stack.len > 0)
 	{
-		op_nrb(peek_largest_num(&B_STACK, false), frame);
+		op_nrb(peek_largest_num(&frame->b_stack, false), frame);
 		op_pa(frame);
 	}
 }
