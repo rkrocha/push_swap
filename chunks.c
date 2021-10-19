@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 10:44:23 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/19 15:41:52 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/19 15:43:12 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ int	def_chunk_array(t_data *frame)
 
 void	def_chunks_params(t_data *frame)
 {
-	peek_lis(&A_STACK, frame);
-	peek_lds(&A_STACK, frame);
 	if (A_STACK.len <= 100)
 		frame->chunk_size = 20;
 	else
