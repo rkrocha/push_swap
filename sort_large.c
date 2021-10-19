@@ -13,18 +13,6 @@
 #include "libft.h"
 #include "push_swap.h"
 
-static void	def_frame_params(t_data *frame)
-{
-	if (A_STACK.len <= 100)
-		frame->chunk_size = 20;
-	else
-		frame->chunk_size = 45;
-	frame->max_chunks = A_STACK.len / frame->chunk_size + 1;
-	if (A_STACK.len % frame->chunk_size == 0)
-		frame->max_chunks--;
-	frame->largest_num = peek_largest_num(&A_STACK, true);
-}
-
 static void	optimize_setup(int *setup, t_data *frame)
 {
 	int	rr_count;
@@ -38,10 +26,6 @@ static void	optimize_setup(int *setup, t_data *frame)
 		else
 			rr_count = setup[2];
 	}
-	// else
-	// {
-			///// case for setup1 * setup2 < 0
-	// }
 	setup[0] = rr_count;
 	setup[1] -= rr_count;
 	setup[2] -= rr_count;
@@ -80,14 +64,10 @@ static void	calc_shortest_setup(t_data *frame)
 	setup_one[1] = frame->source_top[1];
 	if (ft_abs(frame->source_top[1] - A_STACK.len) < frame->source_top[1])
 		setup_one[1] = frame->source_top[1] - A_STACK.len;
-
 	setup_one[2] = frame->destin_top[0];
 	if (ft_abs(frame->destin_top[1]) < frame->destin_top[0])
 		setup_one[2] = frame->destin_top[1];
 	optimize_setup(setup_one, frame);
-
-
-
 	setup_two[1] = frame->source_bot[1];
 	if (ft_abs(frame->source_bot[1] - A_STACK.len) < frame->source_bot[1])
 		setup_two[1] = frame->source_bot[1] - A_STACK.len;
@@ -95,25 +75,26 @@ static void	calc_shortest_setup(t_data *frame)
 	if (ft_abs(frame->destin_bot[1]) < frame->destin_bot[0])
 		setup_two[2] = frame->destin_bot[1];
 	optimize_setup(setup_two, frame);
-
 	choose_setup(setup_one, setup_two, frame);
+}
 
-
-
-		// ft_putendl("");
-		// ft_putnbr(frame->setup_actions[0]);
-		// ft_putchar(' ');
-		// ft_putnbr(frame->setup_actions[1]);   //////////////////
-		// ft_putchar(' ');
-		// ft_putnbr(frame->setup_actions[2]);
-		// ft_putendl("");
+static void	pre_sort(t_data *frame)
+{
+	peek_sources(frame);
+	peek_destination(frame->source_top[0], frame->destin_top, frame);
+	peek_destination(frame->source_bot[0], frame->destin_bot, frame);
+	calc_shortest_setup(frame);
+	op_nrr(frame->setup_actions[0], frame);
+	op_nra(frame->setup_actions[1], frame);
+	op_nrb(frame->setup_actions[2], frame);
+	op_pb(frame);
 }
 
 void	sort_large(t_data *frame)
 {
 	int	i;
 
-	def_frame_params(frame);
+	def_chunks_params(frame);
 	frame->iter_chunks = 0;
 	while (frame->iter_chunks < frame->max_chunks)
 	{
@@ -122,21 +103,12 @@ void	sort_large(t_data *frame)
 		frame->chunk_len = def_chunk_array(frame);
 		while (i < frame->chunk_len)
 		{
-			peek_sources(frame);
-			peek_destination(frame->source_top[0], frame->destin_top, frame);
-			peek_destination(frame->source_bot[0], frame->destin_bot, frame);
-			calc_shortest_setup(frame);
-			op_nrr(frame->setup_actions[0], frame);
-			op_nra(frame->setup_actions[1], frame);
-			op_nrb(frame->setup_actions[2], frame);
-			op_pb(frame);
+			pre_sort(frame);
 			i++;
 		}
 		op_nrb(peek_largest_num(&B_STACK, false), frame);
 		frame->iter_chunks++;
 	}
-
-
 	while (B_STACK.len > 0)
 	{
 		op_nrb(peek_largest_num(&B_STACK, false), frame);
