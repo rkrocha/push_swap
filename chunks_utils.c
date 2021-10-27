@@ -6,14 +6,14 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 10:52:20 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/19 16:04:21 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/27 08:15:32 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-static bool	in_chunk(int num, t_data *frame)
+static t_bool	in_chunk(int num, t_data *frame)
 {
 	int	i;
 
@@ -21,10 +21,10 @@ static bool	in_chunk(int num, t_data *frame)
 	while (i < frame->chunk_len)
 	{
 		if (num == frame->chunk_array[i])
-			return (true);
+			return (TRUE);
 		i++;
 	}
-	return (false);
+	return (FALSE);
 }
 
 void	peek_sources(t_data *frame)

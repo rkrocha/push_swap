@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 09:42:35 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/19 16:04:54 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/27 08:14:25 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ void	parse_args(t_data *frame, int argc, const char **argv);
 ** peek_utils.c:
 */
 int		peek_num_position(t_stack *stack, int num);
-int		peek_smallest_num(t_stack *stack, bool return_num);
-int		peek_largest_num(t_stack *stack, bool return_num);
+int		peek_smallest_num(t_stack *stack, t_bool return_num);
+int		peek_largest_num(t_stack *stack, t_bool return_num);
 
 /*
 ** op_utils.c:

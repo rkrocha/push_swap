@@ -108,12 +108,12 @@ void	sort_large(t_data *frame)
 			pre_sort(frame);
 			i++;
 		}
-		op_nrb(peek_largest_num(&frame->b_stack, false), frame);
+		op_nrb(peek_largest_num(&frame->b_stack, FALSE), frame);
 		frame->iter_chunks++;
 	}
 	while (frame->b_stack.len > 0)
 	{
-		op_nrb(peek_largest_num(&frame->b_stack, false), frame);
+		op_nrb(peek_largest_num(&frame->b_stack, FALSE), frame);
 		op_pa(frame);
 	}
 }

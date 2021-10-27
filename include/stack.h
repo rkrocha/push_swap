@@ -6,14 +6,14 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 14:57:33 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/05 09:49:46 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/27 08:15:52 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STACK_H
 # define STACK_H
 
-# include <stdbool.h>
+# include "libft_defines.h"
 
 typedef struct s_dlist
 {
@@ -42,7 +42,7 @@ void	dlst_iter(t_dlist *lst, void (*f)(int));
 */
 void	stack_push(t_stack *stack, t_dlist *new);
 t_dlist	*stack_pop(t_stack *stack);
-bool	stack_issorted(t_stack *stack);
+t_bool	stack_issorted(t_stack *stack);
 void	stack_print(t_stack *stack, char *title);
 void	stack_clear(t_stack *stack);
 

@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:38:42 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/19 16:09:17 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/27 08:15:32 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include "push_swap.h"
 
-static bool	num_isunique(t_stack *stack, long long num)
+static t_bool	num_isunique(t_stack *stack, long long num)
 {
 	t_dlist	*tracker;
 
@@ -22,26 +22,26 @@ static bool	num_isunique(t_stack *stack, long long num)
 	while (tracker)
 	{
 		if (num == tracker->content)
-			return (false);
+			return (FALSE);
 		tracker = tracker->next;
 	}
-	return (true);
+	return (TRUE);
 }
 
-static bool	num_isvalid(long long num)
+static t_bool	num_isvalid(long long num)
 {
 	if (num > INT_MAX || num < INT_MIN)
-		return (false);
-	return (true);
+		return (FALSE);
+	return (TRUE);
 }
 
-static bool	str_isvalid(const char *str)
+static t_bool	str_isvalid(const char *str)
 {
 	if (*str == '+' || *str == '-')
 		str++;
 	if (*str && !ft_strignore(str, "0123456789"))
-		return (true);
-	return (false);
+		return (TRUE);
+	return (FALSE);
 }
 
 void	parse_args(t_data *frame, int argc, const char **argv)
@@ -52,9 +52,9 @@ void	parse_args(t_data *frame, int argc, const char **argv)
 	while (argc > 0)
 	{
 		num = ft_atoll(argv[argc]);
-		if (str_isvalid(argv[argc]) == false
-			|| num_isvalid(num) == false
-			|| num_isunique(&frame->a_stack, num) == false)
+		if (str_isvalid(argv[argc]) == FALSE
+			|| num_isvalid(num) == FALSE
+			|| num_isunique(&frame->a_stack, num) == FALSE)
 			error_exit(frame);
 		stack_push(&frame->a_stack, dlst_new(num));
 		argc--;

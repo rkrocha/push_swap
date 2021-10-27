@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 07:42:16 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/19 15:43:07 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/27 08:15:32 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int	peek_num_position(t_stack *stack, int num)
 	int		pos;
 	t_dlist	*tracker;
 
-	if (num < peek_smallest_num(stack, true))
-		return (peek_smallest_num(stack, false));
-	if (num > peek_largest_num(stack, true))
-		return (peek_largest_num(stack, false) + 1);
+	if (num < peek_smallest_num(stack, TRUE))
+		return (peek_smallest_num(stack, FALSE));
+	if (num > peek_largest_num(stack, TRUE))
+		return (peek_largest_num(stack, FALSE) + 1);
 	if (stack_issorted(stack) && num < value(stack->top))
 		return (0);
 	if (stack_issorted(stack) && num > value(stack->bottom))
@@ -45,7 +45,7 @@ int	peek_num_position(t_stack *stack, int num)
 /*
 ** Returns the position of the smallest number in a stack.
 */
-int	peek_smallest_num(t_stack *stack, bool return_num)
+int	peek_smallest_num(t_stack *stack, t_bool return_num)
 {
 	t_dlist	*tracker;
 	int		smallest_num;
@@ -71,7 +71,7 @@ int	peek_smallest_num(t_stack *stack, bool return_num)
 	return (smallest_pos);
 }
 
-int	peek_largest_num(t_stack *stack, bool return_num)
+int	peek_largest_num(t_stack *stack, t_bool return_num)
 {
 	t_dlist	*tracker;
 	int		largest_num;

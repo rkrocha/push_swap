@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 10:44:23 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/19 16:04:02 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/27 08:15:14 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	def_chunk_array(t_data *frame)
 	count = 0;
 	if (frame->iter_chunks == 0)
 	{
-		smallest = peek_smallest_num(&frame->a_stack, true);
+		smallest = peek_smallest_num(&frame->a_stack, TRUE);
 		frame->chunk_array[count] = smallest;
 		count++;
 	}
@@ -70,5 +70,5 @@ void	def_chunks_params(t_data *frame)
 	frame->max_chunks = frame->a_stack.len / frame->chunk_size + 1;
 	if (frame->a_stack.len % frame->chunk_size == 0)
 		frame->max_chunks--;
-	frame->largest_num = peek_largest_num(&frame->a_stack, true);
+	frame->largest_num = peek_largest_num(&frame->a_stack, TRUE);
 }
