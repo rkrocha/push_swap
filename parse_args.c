@@ -6,11 +6,10 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:38:42 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/27 08:15:32 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/11/01 08:50:19 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
 #include "libft.h"
 #include "push_swap.h"
 
