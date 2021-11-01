@@ -6,7 +6,7 @@
 /*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 09:42:35 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/27 08:14:25 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/10/27 14:52:12 by rkochhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ typedef struct s_data
 {
 	t_stack	a_stack;
 	t_stack	b_stack;
-	int		lis;
-	int		lds;
 	int		max_chunks;
 	int		iter_chunks;
 	int		chunk_size;
