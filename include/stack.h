@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   stack.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkochhan <rkochhan@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rafa <rafa@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 14:57:33 by rkochhan          #+#    #+#             */
-/*   Updated: 2021/10/27 08:15:52 by rkochhan         ###   ########.fr       */
+/*   Updated: 2021/12/20 10:55:52 by rafa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STACK_H
 # define STACK_H
 
-# include "libft_defines.h"
+# include "libft.h"
 
 typedef struct s_dlist
 {
