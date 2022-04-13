@@ -1,8 +1,6 @@
 <br/>
 <p align="center">
-  <a href="https://github.com/rkrocha/42cursus/blob/master/subjects/02.push_swap.pdf">
-    <img src="https://github.com/rkrocha/42cursus/blob/master/badges/push_swape.png" alt="Logo" width="150" height="150">
-  </a>
+    <img src="https://github.com/rkrocha/42cursus/blob/main/badges/push_swape.png" alt="Logo" width="150" height="150">
 
   <h3 align="center">push_swap</h3>
 
